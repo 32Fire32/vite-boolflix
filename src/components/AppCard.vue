@@ -13,8 +13,13 @@ export default {
 <template>
   <h1>Titolo: {{ title }}</h1>
   <h2>Titolo originale: {{ originalTitle }}</h2>
-  <h3>Lingua originale: {{ originalLanguage }}</h3>
+  <h3>Lingua originale:</h3>
+  <img :src="originalLanguage" alt="originalTitle" />
   <h4>Voto: {{ vote }}</h4>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+img {
+  width: 100px;
+}
+</style>

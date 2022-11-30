@@ -30,6 +30,22 @@ export default {
         })
         .then((resp) => {
           this.store.movies = resp.data.results;
+          this.store.movies.forEach((element, i) => {
+            if (this.store.movies[i].original_language === "en") {
+              this.store.movies[i].original_language = "/src/assets/en.png";
+            } else if (this.store.movies[i].original_language === "fr") {
+              this.store.movies[i].original_language = "/src/assets/fr.png";
+            } else if (this.store.movies[i].original_language === "it") {
+              this.store.movies[i].original_language = "/src/assets/it.png";
+            } else if (this.store.movies[i].original_language === "en") {
+              this.store.movies[i].original_language = "/src/assets/de.png";
+            } else if (this.store.movies[i].original_language === "ja") {
+              this.store.movies[i].original_language = "/src/assets/jp.png";
+            } else if (this.store.movies[i].original_language === "es") {
+              this.store.movies[i].original_language = "/src/assets/es.png";
+            } else
+              this.store.movies[i].original_language = "/src/assets/na.png";
+          });
         })
         .catch((err) => {
           this.store.movies = [];

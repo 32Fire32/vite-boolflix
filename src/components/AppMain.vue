@@ -14,11 +14,6 @@ export default {
       store,
     };
   },
-  methods: {
-    saluta() {
-      console.log("ciao");
-    },
-  },
 };
 </script>
 
