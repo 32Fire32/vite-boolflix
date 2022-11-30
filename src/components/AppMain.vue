@@ -18,17 +18,36 @@ export default {
 </script>
 
 <template>
-  <ul>
-    <li>
-      <AppCard
-        v-for="movie in store.movies"
-        :title="movie.title"
-        :originalTitle="movie.original_title"
-        :originalLanguage="movie.original_language"
-        :vote="movie.vote_average"
-      />
-    </li>
-  </ul>
+  <div>
+    <div class="movies">
+      <h2>FILM:</h2>
+      <ul>
+        <li>
+          <AppCard
+            v-for="movie in store.movies"
+            :title="movie.title"
+            :originalTitle="movie.original_title"
+            :originalLanguage="movie.original_language"
+            :vote="movie.vote_average"
+          />
+        </li>
+      </ul>
+    </div>
+    <div class="tvseries">
+      <h2>SERIETV:</h2>
+      <ul>
+        <li>
+          <AppCard
+            v-for="tvserie in store.tvseries"
+            :title="tvserie.name"
+            :originalTitle="tvserie.original_title"
+            :originalLanguage="tvserie.original_language"
+            :vote="tvserie.vote_average"
+          />
+        </li>
+      </ul>
+    </div>
+  </div>
 </template>
 
 <style scoped lang="scss"></style>
