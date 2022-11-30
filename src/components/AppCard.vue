@@ -30,33 +30,48 @@ export default {
 </script>
 
 <template>
-  <h1>Titolo: {{ title }}</h1>
-  <h2>Titolo originale: {{ originalTitle }}</h2>
-  <h3>Lingua originale:</h3>
-  <img :src="originalLanguage" :alt="originalTitle" />
-  <div class="stars d-flex">
-    <!-- <div v-for="rate in rateCount" v-if="stars(starCount, rateCount)">
+  <div class="cardMovie">
+    <div class="cover">
+      <img
+        class="poster"
+        :src="`https://image.tmdb.org/t/p/w342${poster}`"
+        :alt="originalTitle"
+        v-if="poster != null"
+      />
+      <img
+        v-else
+        src="/src/assets/na.jpg"
+        :alt="originalTitle"
+        class="poster"
+      />
+    </div>
+    <div class="info d-none">
+      <h1>Titolo: {{ title }}</h1>
+      <h2>Titolo originale: {{ originalTitle }}</h2>
+      <h3>Lingua originale:</h3>
+      <img :src="originalLanguage" :alt="originalTitle" />
+      <div class="stars">
+        <!-- <div v-for="rate in rateCount" v-if="stars(starCount, rateCount)">
       <i class="fa-solid fa-star"></i>
     </div> -->
-    <div v-if="starCount >= 2"><i class="fa-solid fa-star"></i></div>
-    <div v-if="starCount >= 4"><i class="fa-solid fa-star"></i></div>
-    <div v-if="starCount >= 6"><i class="fa-solid fa-star"></i></div>
-    <div v-if="starCount >= 8"><i class="fa-solid fa-star"></i></div>
-    <div v-if="starCount >= 10"><i class="fa-solid fa-star"></i></div>
+        <div v-if="starCount >= 2"><i class="fa-solid fa-star"></i></div>
+        <div v-if="starCount >= 4"><i class="fa-solid fa-star"></i></div>
+        <div v-if="starCount >= 6"><i class="fa-solid fa-star"></i></div>
+        <div v-if="starCount >= 8"><i class="fa-solid fa-star"></i></div>
+        <div v-if="starCount >= 10"><i class="fa-solid fa-star"></i></div>
+      </div>
+      <h4>Voto: {{ starCount }}</h4>
+    </div>
   </div>
-  <h4>Voto: {{ starCount }}</h4>
-  <img
-    class="poster"
-    :src="`https://image.tmdb.org/t/p/w342${poster}`"
-    :alt="originalTitle"
-    v-if="poster != null"
-  />
-  <img v-else src="/src/assets/na.jpg" :alt="originalTitle" class="poster" />
 </template>
 
 <style scoped lang="scss">
-img {
-  width: 100px;
+.cardMovie {
+  width: calc(100% / 3);
+  img {
+    width: 100%;
+    object-fit: cover;
+  }
 }
 .poster {
   width: 300px;

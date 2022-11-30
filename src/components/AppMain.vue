@@ -18,11 +18,11 @@ export default {
 </script>
 
 <template>
-  <div>
-    <div class="movies">
-      <h2>FILM:</h2>
-      <ul>
-        <li>
+  <main>
+    <section class="container">
+      <div class="movies">
+        <h2>FILM:</h2>
+        <div class="d-flex flex-wrap">
           <AppCard
             v-for="movie in store.movies"
             :title="movie.title"
@@ -31,13 +31,13 @@ export default {
             :vote="movie.vote_average"
             :poster="movie.backdrop_path"
           />
-        </li>
-      </ul>
-    </div>
-    <div class="tvseries">
-      <h2>SERIETV:</h2>
-      <ul>
-        <li>
+        </div>
+      </div>
+    </section>
+    <section class="container">
+      <div class="tvseries">
+        <h2>SERIETV:</h2>
+        <div class="d-flex flex-wrap">
           <AppCard
             v-for="tvserie in store.tvseries"
             :title="tvserie.name"
@@ -46,10 +46,15 @@ export default {
             :vote="tvserie.vote_average"
             :poster="tvserie.backdrop_path"
           />
-        </li>
-      </ul>
-    </div>
-  </div>
+        </div>
+      </div>
+    </section>
+  </main>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+main {
+  color: #fff;
+  background-color: var(--secondary-color);
+}
+</style>
