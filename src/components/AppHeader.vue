@@ -1,5 +1,5 @@
 <script>
-import { store } from "./store";
+import { store } from "../store.js";
 
 export default {
   name: "AppHeader",
@@ -13,9 +13,14 @@ export default {
 
 <template>
   <h1>Header</h1>
-  <form>
-    <input type="text" />
+  <form @submit.prevent="$emit('search')">
+    <input
+      type="text"
+      placeholder="Cerca il tuo film"
+      v-model="store.searchText"
+    />
     <button type="submit">Cerca</button>
+    <button type="reset" @click="$emit('search', 'reset')">Reset</button>
   </form>
 </template>
 
