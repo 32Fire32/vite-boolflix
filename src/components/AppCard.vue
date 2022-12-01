@@ -52,7 +52,7 @@ export default {
         v-if="poster != null"
       />
       <img
-        class="poster"
+        class="poster_na"
         v-else
         src="/src/assets/na.jpg"
         :alt="originalTitle"
@@ -91,9 +91,25 @@ export default {
   .poster {
     border: 1px solid black;
     width: 100%;
-    object-fit: cover;
+  }
+  .poster_na {
+    margin-top: 100px;
+    border: 1px solid black;
+    width: 100%;
   }
 }
+.info {
+  display: none;
+}
+
+.cardMovie:hover .info {
+  display: block;
+  cursor: pointer;
+}
+.cardMovie:hover .cover {
+  display: none;
+}
+
 .flag {
   width: 50px;
 }
