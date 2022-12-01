@@ -59,25 +59,40 @@ export default {
       />
     </div>
     <!-- SEZIONE INFO -->
-    <div class="info">
-      <h1>Titolo: {{ title }}</h1>
-      <h2>Titolo originale: {{ originalTitle }}</h2>
-      <!-- BANDIERA -->
-      <h3>Lingua originale:</h3>
-      <!-- <img
+    <div class="info flex-column justify-content-between align-items-center">
+      <div>
+        <h1 class="text-center">{{ title }}</h1>
+      </div>
+      <div class="text-center">
+        <h4>Titolo originale:</h4>
+        <h2>{{ originalTitle }}</h2>
+      </div>
+      <div class="d-flex">
+        <!-- BANDIERA -->
+        <h3>Lingua originale:</h3>
+        <!-- <img
         v-if="isFlag === true"
         class="flag"
         :src="`/src/assets/${originalLanguage}.png`"
         :alt="originalTitle"
       />
       <img v-else class="flag" src="/src/assets/na.jpg" alt="na" /> -->
-      <CountryFlag :country="langFlag(originalLanguage)" size="big" />
-      <!-- VOTO STELLE -->
-      <div class="d-flex stars">
-        <font-awesome-icon icon="fa-solid fa-star" v-for="n in rateVote" />
+        <CountryFlag
+          :country="langFlag(originalLanguage)"
+          size="big"
+          class="ms-2"
+        />
       </div>
-      <h4 v-if="rateVote == 0">Nessun voto</h4>
-      <h4 v-else>Voto: {{ vote }}</h4>
+      <!-- VOTO STELLE -->
+      <div class="voting text-center">
+        <div class="d-flex stars mb-4">
+          <font-awesome-icon icon="fa-solid fa-star" v-for="n in rateVote" />
+        </div>
+        <div>
+          <h4 v-if="rateVote == 0">Nessun voto</h4>
+          <h4 v-else>Voto: {{ vote }}</h4>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -85,9 +100,10 @@ export default {
 <style scoped lang="scss">
 .cardMovie {
   background-color: rgb(92, 92, 92);
-  padding: 10px;
+  padding: 30px;
   margin: 10px;
   width: calc(100% / 3 - 20px);
+  border: 5px solid black;
   .poster {
     border: 1px solid black;
     width: 100%;
@@ -100,10 +116,12 @@ export default {
 }
 .info {
   display: none;
+  height: 100%;
+  border: 1px solid black;
 }
 
 .cardMovie:hover .info {
-  display: block;
+  display: flex;
   cursor: pointer;
 }
 .cardMovie:hover .cover {
