@@ -74,7 +74,7 @@ export default {
       <CountryFlag :country="langFlag(originalLanguage)" size="big" />
       <!-- VOTO STELLE -->
       <div class="d-flex stars">
-        <div v-for="n in rateVote"><i class="fa-solid fa-star"></i></div>
+        <font-awesome-icon icon="fa-solid fa-star" v-for="n in rateVote" />
       </div>
       <h4 v-if="rateVote == 0">Nessun voto</h4>
       <h4 v-else>Voto: {{ vote }}</h4>
