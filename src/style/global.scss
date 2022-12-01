@@ -3,3 +3,14 @@
 
 // IMPORT VARIABLES
 @import "/src/style/partials/variables.scss";
+
+// COMMON
+body {
+  height: 100vh;
+  background: linear-gradient(to top, #000000, #dadbd4 50%);
+}
+
+// TYPOGRAPHY
+body {
+  font-size: 1rem;
+}

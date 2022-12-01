@@ -4,6 +4,7 @@ export const store = reactive({
   searchText: "",
   movies: [],
   tvseries: [],
+  start: false,
   flags: [
     "de.png",
     "en.png",

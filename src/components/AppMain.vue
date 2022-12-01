@@ -12,8 +12,6 @@ export default {
   data() {
     return {
       store,
-      starCount: 0,
-      rateCount: [2, 4, 6, 8, 10],
     };
   },
 };
@@ -21,9 +19,10 @@ export default {
 
 <template>
   <main>
+    <!-- SEZIONE FILM -->
     <section class="container">
       <div class="movies">
-        <h2>FILM:</h2>
+        <h2>FILM</h2>
         <div class="d-flex flex-wrap">
           <AppCard
             v-for="movie in store.movies"
@@ -32,13 +31,15 @@ export default {
             :originalLanguage="movie.original_language"
             :vote="movie.vote_average"
             :poster="movie.poster_path"
+            :summary="movie.overview"
           />
         </div>
       </div>
     </section>
+    <!-- SEZIONE SERIE TV -->
     <section class="container">
       <div class="tvseries">
-        <h2>SERIETV:</h2>
+        <h2>SERIE TV</h2>
         <div class="d-flex flex-wrap">
           <AppCard
             v-for="tvserie in store.tvseries"
@@ -47,6 +48,7 @@ export default {
             :originalLanguage="tvserie.original_language"
             :vote="tvserie.vote_average"
             :poster="tvserie.poster_path"
+            :summary="tvserie.overview"
           />
         </div>
       </div>
@@ -56,7 +58,8 @@ export default {
 
 <style scoped lang="scss">
 main {
+  margin-top: 50px;
   color: #fff;
-  background-color: var(--secondary-color);
+  background: linear-gradient(to top, #000000 50%, #dadbd4);
 }
 </style>
