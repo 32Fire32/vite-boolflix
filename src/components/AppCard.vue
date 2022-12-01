@@ -1,6 +1,12 @@
 <script>
+import { store } from "../store.js";
+import CountryFlag from "vue-country-flag-next";
+
 export default {
   name: "AppCard",
+  components: {
+    CountryFlag,
+  },
   props: {
     title: String,
     originalTitle: String,
@@ -10,27 +16,34 @@ export default {
   },
   data() {
     return {
-      starCount: 0,
-      rateCount: [2, 4, 6, 8, 10],
+      store,
     };
   },
   methods: {
-    // stars(item, array) {
-    //   array.forEach((element) => {
-    //     if (item >= element) {
-    //       return true;
-    //     }
+    langFlag(lang) {
+      if (lang == "en") {
+        return "gb";
+      }
+      return lang;
+    },
+  },
+
+  computed: {
+    rateVote() {
+      return Math.ceil(this.vote / 2);
+    },
+    // isFlag() {
+    //   this.store.flags.forEach((flag) => {
+    //     console.log(flag.indexOf(this.originalLanguage) != -1);
     //   });
     // },
-  },
-  created() {
-    this.starCount = Math.ceil(this.vote);
   },
 };
 </script>
 
 <template>
   <div class="cardMovie">
+    <!-- IMMAGINE DI COPERTINA -->
     <div class="cover">
       <img
         class="poster"
@@ -39,44 +52,52 @@ export default {
         v-if="poster != null"
       />
       <img
+        class="poster"
         v-else
         src="/src/assets/na.jpg"
         :alt="originalTitle"
-        class="poster"
       />
     </div>
-    <div class="info d-none">
+    <!-- SEZIONE INFO -->
+    <div class="info">
       <h1>Titolo: {{ title }}</h1>
       <h2>Titolo originale: {{ originalTitle }}</h2>
+      <!-- BANDIERA -->
       <h3>Lingua originale:</h3>
-      <img :src="originalLanguage" :alt="originalTitle" />
-      <div class="stars">
-        <!-- <div v-for="rate in rateCount" v-if="stars(starCount, rateCount)">
-      <i class="fa-solid fa-star"></i>
-    </div> -->
-        <div v-if="starCount >= 2"><i class="fa-solid fa-star"></i></div>
-        <div v-if="starCount >= 4"><i class="fa-solid fa-star"></i></div>
-        <div v-if="starCount >= 6"><i class="fa-solid fa-star"></i></div>
-        <div v-if="starCount >= 8"><i class="fa-solid fa-star"></i></div>
-        <div v-if="starCount >= 10"><i class="fa-solid fa-star"></i></div>
+      <!-- <img
+        v-if="isFlag === true"
+        class="flag"
+        :src="`/src/assets/${originalLanguage}.png`"
+        :alt="originalTitle"
+      />
+      <img v-else class="flag" src="/src/assets/na.jpg" alt="na" /> -->
+      <CountryFlag :country="langFlag(originalLanguage)" size="big" />
+      <!-- VOTO STELLE -->
+      <div class="d-flex stars">
+        <div v-for="n in rateVote"><i class="fa-solid fa-star"></i></div>
       </div>
-      <h4>Voto: {{ starCount }}</h4>
+      <h4 v-if="rateVote == 0">Nessun voto</h4>
+      <h4 v-else>Voto: {{ vote }}</h4>
     </div>
   </div>
 </template>
 
 <style scoped lang="scss">
 .cardMovie {
-  width: calc(100% / 3);
-  img {
+  background-color: rgb(92, 92, 92);
+  padding: 10px;
+  margin: 10px;
+  width: calc(100% / 3 - 20px);
+  .poster {
+    border: 1px solid black;
     width: 100%;
     object-fit: cover;
   }
 }
-.poster {
-  width: 300px;
-  border: 1px solid black;
+.flag {
+  width: 50px;
 }
+
 .stars {
   color: rgb(235, 235, 91);
   font-size: 2rem;

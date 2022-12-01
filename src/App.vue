@@ -17,6 +17,10 @@ export default {
     };
   },
   methods: {
+    findOne(flag, movies) {
+      return flag.some((v) => movies.includes(v));
+    },
+
     getMovie(data = "") {
       if (data === "reset") {
         this.store.searchText = "";
@@ -30,30 +34,12 @@ export default {
         })
         .then((resp) => {
           this.store.movies = resp.data.results;
-          this.store.movies.forEach((element, i) => {
-            if (this.store.movies[i].original_language === "en") {
-              this.store.movies[i].original_language = "/src/assets/en.png";
-            } else if (this.store.movies[i].original_language === "fr") {
-              this.store.movies[i].original_language = "/src/assets/fr.webp";
-            } else if (this.store.movies[i].original_language === "it") {
-              this.store.movies[i].original_language = "/src/assets/it.png";
-            } else if (this.store.movies[i].original_language === "en") {
-              this.store.movies[i].original_language = "/src/assets/de.png";
-            } else if (this.store.movies[i].original_language === "ja") {
-              this.store.movies[i].original_language = "/src/assets/jp.png";
-            } else if (this.store.movies[i].original_language === "es") {
-              this.store.movies[i].original_language = "/src/assets/esp.webp";
-            } else
-              this.store.movies[i].original_language = "/src/assets/na.jpg";
-          });
         })
         .catch((err) => {
           this.store.movies = [];
           this.store.tvseries = [];
         });
-      if (data === "reset") {
-        this.store.searchText = "";
-      }
+
       axios
         .get("https://api.themoviedb.org/3/search/tv", {
           params: {
@@ -63,22 +49,6 @@ export default {
         })
         .then((resp) => {
           this.store.tvseries = resp.data.results;
-          this.store.tvseries.forEach((element, i) => {
-            if (this.store.tvseries[i].original_language === "en") {
-              this.store.tvseries[i].original_language = "/src/assets/en.png";
-            } else if (this.store.tvseries[i].original_language === "fr") {
-              this.store.tvseries[i].original_language = "/src/assets/fr.webp";
-            } else if (this.store.tvseries[i].original_language === "it") {
-              this.store.tvseries[i].original_language = "/src/assets/it.png";
-            } else if (this.store.tvseries[i].original_language === "en") {
-              this.store.tvseries[i].original_language = "/src/assets/de.png";
-            } else if (this.store.tvseries[i].original_language === "ja") {
-              this.store.tvseries[i].original_language = "/src/assets/jp.png";
-            } else if (this.store.tvseries[i].original_language === "es") {
-              this.store.tvseries[i].original_language = "/src/assets/es.webp";
-            } else
-              this.store.tvseries[i].original_language = "/src/assets/na.jpg";
-          });
         })
         .catch((err) => {
           this.store.movies = [];

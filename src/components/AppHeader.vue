@@ -24,6 +24,7 @@ export default {
           type="text"
           placeholder="Cerca il tuo film"
           v-model="store.searchText"
+          required
         />
         <button type="submit">Cerca</button>
         <button type="reset" @click="$emit('search', 'reset')">Reset</button>

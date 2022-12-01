@@ -12,6 +12,8 @@ export default {
   data() {
     return {
       store,
+      starCount: 0,
+      rateCount: [2, 4, 6, 8, 10],
     };
   },
 };
@@ -29,7 +31,7 @@ export default {
             :originalTitle="movie.original_title"
             :originalLanguage="movie.original_language"
             :vote="movie.vote_average"
-            :poster="movie.backdrop_path"
+            :poster="movie.poster_path"
           />
         </div>
       </div>
@@ -44,7 +46,7 @@ export default {
             :originalTitle="tvserie.original_title"
             :originalLanguage="tvserie.original_language"
             :vote="tvserie.vote_average"
-            :poster="tvserie.backdrop_path"
+            :poster="tvserie.poster_path"
           />
         </div>
       </div>
