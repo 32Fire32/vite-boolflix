@@ -5,14 +5,5 @@ export const store = reactive({
   movies: [],
   tvseries: [],
   start: false,
-  flags: [
-    "de.png",
-    "en.png",
-    "esp.png",
-    "fr.png",
-    "it.png",
-    "ja.png",
-    "ru.png",
-    "us.png",
-  ],
+  adult: false,
 });

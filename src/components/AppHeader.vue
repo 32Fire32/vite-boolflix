@@ -12,6 +12,14 @@ export default {
     reload() {
       window.location.reload();
     },
+    adultFilterOn() {
+      console.log("child on");
+      return (store.adult = false);
+    },
+    adultFilterOff() {
+      console.log("child off");
+      return (store.adult = true);
+    },
   },
 };
 </script>
@@ -25,15 +33,31 @@ export default {
         <h1>BOOLFIX</h1>
       </div>
       <!-- FORM DI RICERCA -->
-      <form @submit.prevent="$emit('search')">
+      <form @submit.prevent="$emit('search')" class="d-flex align-items-center">
         <input
           type="text"
           placeholder="Cerca il tuo film"
           v-model="store.searchText"
           required
         />
-        <button type="submit">CERCA</button>
-        <button type="reset" @click="$emit('search', 'reset')">RESET</button>
+        <button type="submit">
+          <font-awesome-icon icon="fa-solid fa-magnifying-glass" class="ms-1" />
+        </button>
+        <button type="reset" @click="$emit('search', 'reset')">
+          <font-awesome-icon icon="fa-solid fa-arrow-rotate-left" />
+        </button>
+        <font-awesome-icon
+          icon="fa-solid fa-child-reaching "
+          class="ms-1 child-off"
+          @click="adultFilterOn"
+          v-if="store.adult"
+        />
+        <font-awesome-icon
+          icon="fa-solid fa-child-reaching "
+          class="ms-1 child-on"
+          @click="adultFilterOff"
+          v-else
+        />
       </form>
     </div>
   </header>
@@ -55,8 +79,23 @@ header {
     cursor: pointer;
   }
 
+  .child-off {
+    color: var(--primary-color);
+    font-size: 1.4rem;
+    border: 1px solid var(--primary-color);
+    border-radius: 100%;
+    padding: 5px;
+  }
+
+  .child-on {
+    color: green;
+    font-size: 1.4rem;
+    border: 1px solid green;
+    border-radius: 100%;
+    padding: 5px;
+  }
+
   button {
-    margin: 0 10px;
     font-size: 1.3rem;
     font-weight: bold;
     color: var(--primary-color);
