@@ -44,9 +44,8 @@ export default {
     <section class="container">
       <div class="carousel-container">
         <h2>FILM</h2>
-
         <div class="carousel-list">
-          <ul class="slider-content" :class="{ nextTab }">
+          <ul class="slider-content">
             <div @click="prevImageMovie" class="prev">
               <font-awesome-icon
                 icon="fa-solid fa-chevron-left"
@@ -92,7 +91,6 @@ export default {
             </div>
             <li v-for="tvserie in store.tvseries">
               <AppCard
-                class="slide"
                 :title="tvserie.name"
                 :originalTitle="tvserie.original_name"
                 :originalLanguage="tvserie.original_language"
@@ -110,7 +108,7 @@ export default {
 
 <style scoped lang="scss">
 main {
-  height: 100vh;
+  height: 100%;
   margin-top: 100px;
   color: #fff;
   background: linear-gradient(to top, #000000 50%, #dadbd4);
@@ -128,11 +126,6 @@ main {
       display: flex;
       flex-wrap: nowrap;
       position: relative;
-      -webkit-overflow-scrolling: touch;
-      -ms-overflow-style: -ms-autohiding-scrollbar;
-      .slide {
-        transition: all 1s;
-      }
 
       li {
         list-style-type: none;
@@ -153,11 +146,6 @@ main {
 
         cursor: pointer;
       }
-
-      &.next-animation {
-        transition: transform 0.7s ease;
-        pointer-events: none;
-      }
     }
   }
 
@@ -170,21 +158,19 @@ main {
     display: flex;
     align-items: center;
     cursor: pointer;
-    // background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.5);
     z-index: 10;
     background: transparent;
 
     &:hover {
       background: rgba(0, 0, 0, 0.5);
     }
-
     .arrow {
       color: #fff;
       padding: 12px;
       display: none;
     }
   }
-
   .next {
     right: 0;
   }

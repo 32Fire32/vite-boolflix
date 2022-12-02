@@ -113,7 +113,7 @@ export default {
     width: 100%;
   }
   .cover {
-    transition: opacity 1s;
+    transition: all 1s;
   }
 }
 .info {
@@ -126,6 +126,7 @@ export default {
   right: 0;
   padding: 20px;
   overflow-y: scroll;
+
   .title {
     background-color: rgb(88, 88, 88);
     width: 100%;
@@ -173,6 +174,7 @@ export default {
 }
 .cardMovie:hover .cover {
   opacity: 0.1;
+  transform: scale(110%);
 }
 .fa-star {
   color: rgb(235, 235, 91);
