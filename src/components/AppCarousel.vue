@@ -60,16 +60,14 @@ export default {
               />
             </div>
             <li v-for="movie in store.movies">
-              <div>
-                <AppCard
-                  :title="movie.title"
-                  :originalTitle="movie.original_title"
-                  :originalLanguage="movie.original_language"
-                  :vote="movie.vote_average"
-                  :poster="movie.poster_path"
-                  :summary="movie.overview"
-                />
-              </div>
+              <AppCard
+                :title="movie.title"
+                :originalTitle="movie.original_title"
+                :originalLanguage="movie.original_language"
+                :vote="movie.vote_average"
+                :poster="movie.poster_path"
+                :summary="movie.overview"
+              />
             </li>
           </ul>
         </div>
@@ -93,17 +91,15 @@ export default {
               />
             </div>
             <li v-for="tvserie in store.tvseries">
-              <div>
-                <AppCard
-                  class="slide"
-                  :title="tvserie.name"
-                  :originalTitle="tvserie.original_name"
-                  :originalLanguage="tvserie.original_language"
-                  :vote="tvserie.vote_average"
-                  :poster="tvserie.poster_path"
-                  :summary="tvserie.overview"
-                />
-              </div>
+              <AppCard
+                class="slide"
+                :title="tvserie.name"
+                :originalTitle="tvserie.original_name"
+                :originalLanguage="tvserie.original_language"
+                :vote="tvserie.vote_average"
+                :poster="tvserie.poster_path"
+                :summary="tvserie.overview"
+              />
             </li>
           </ul>
         </div>
@@ -114,6 +110,7 @@ export default {
 
 <style scoped lang="scss">
 main {
+  height: 100vh;
   margin-top: 100px;
   color: #fff;
   background: linear-gradient(to top, #000000 50%, #dadbd4);
@@ -140,12 +137,21 @@ main {
       li {
         list-style-type: none;
         flex: 0 0 auto;
-        width: 20%;
-        cursor: pointer;
-
-        div {
-          width: 100%;
+        width: 50%;
+        @include media-breakpoint-up(sm) {
+          width: calc(100% / 2 - 20px);
         }
+        @include media-breakpoint-up(md) {
+          width: calc(100% / 3 - 20px);
+        }
+        @include media-breakpoint-up(lg) {
+          width: calc(100% / 4 - 20px);
+        }
+        @include media-breakpoint-up(xl) {
+          width: calc(100% / 5 - 20px);
+        }
+
+        cursor: pointer;
       }
 
       &.next-animation {

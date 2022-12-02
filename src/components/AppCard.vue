@@ -63,11 +63,11 @@ export default {
     <!-- SEZIONE INFO -->
     <div class="info flex-column align-items-center justify-content-between">
       <div class="title text-center p-2">
-        <h3>{{ title }}</h3>
+        <h5>{{ title }}</h5>
       </div>
       <div class="text-center" v-if="title != originalTitle">
         <span>Titolo originale:</span>
-        <h3>{{ originalTitle }}</h3>
+        <h5>{{ originalTitle }}</h5>
       </div>
       <div class="overview my-2">
         <p>{{ summary }}</p>
@@ -99,21 +99,11 @@ export default {
   padding: 10px;
   margin: 10px;
   width: 100%;
-  min-height: 243px;
   border: 5px solid black;
   position: relative;
   box-shadow: 0px 0px 15px 12px rgb(0 0 0 / 20%);
   font-family: "Open Sans", sans-serif;
 
-  @include media-breakpoint-up(sm) {
-    width: calc(100% / 1 - 20px);
-  }
-  @include media-breakpoint-up(md) {
-    width: calc(100% / 2 - 20px);
-  }
-  @include media-breakpoint-up(xxl) {
-    width: calc(100% / 4 - 20px);
-  }
   .poster {
     border: 1px solid black;
     width: 100%;
