@@ -44,7 +44,7 @@ export default {
           <AppCard
             v-for="tvserie in store.tvseries"
             :title="tvserie.name"
-            :originalTitle="tvserie.original_title"
+            :originalTitle="tvserie.original_name"
             :originalLanguage="tvserie.original_language"
             :vote="tvserie.vote_average"
             :poster="tvserie.poster_path"

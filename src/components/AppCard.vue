@@ -61,41 +61,32 @@ export default {
       />
     </div>
     <!-- SEZIONE INFO -->
-    <div class="info flex-column align-items-center">
-      <div class="text-center">
+    <div class="info flex-column align-items-center justify-content-between">
+      <div class="title text-center p-2">
         <h3>{{ title }}</h3>
       </div>
       <div class="text-center" v-if="title != originalTitle">
-        <h5>Titolo originale:</h5>
-        <h4>{{ originalTitle }}</h4>
+        <span>Titolo originale:</span>
+        <h3>{{ originalTitle }}</h3>
       </div>
-      <div class="overview">
+      <div class="overview my-2">
         <p>{{ summary }}</p>
       </div>
-      <!-- BANDIERA -->
-      <div class="d-flex align-items-center">
-        <h5>Lingua originale:</h5>
-        <!-- <img
-        v-if="isFlag === true"
-        class="flag"
-        :src="`/src/assets/${originalLanguage}.png`"
-        :alt="originalTitle"
-      />
-      <img v-else class="flag" src="/src/assets/na.jpg" alt="na" /> -->
-        <CountryFlag
-          :country="langFlag(originalLanguage)"
-          size="big"
-          class="ms-2"
-        />
-      </div>
-      <!-- VOTO STELLE -->
-      <div class="voting text-center mt-2">
-        <div class="d-flex stars mb-2">
-          <font-awesome-icon icon="fa-solid fa-star" v-for="n in rateVote" />
+      <div class="bottom d-flex align-items-center justify-content-between p-2">
+        <!-- BANDIERA -->
+        <div class="language d-flex align-items-center">
+          <span>Lingua</span>
+          <CountryFlag :country="langFlag(originalLanguage)" size="small" />
         </div>
-        <div>
-          <h4 v-if="rateVote == 0">Nessun voto</h4>
-          <h4 v-else>Voto: {{ vote }}</h4>
+        <!-- VOTO STELLE -->
+        <div class="voting">
+          <div class="d-flex stars align-items-center">
+            <font-awesome-icon icon="fa-solid fa-star" v-for="n in rateVote" />
+            <div class="vote">
+              <span v-if="rateVote == 0">Nessun voto</span>
+              <span v-else>{{ vote }}</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -111,6 +102,7 @@ export default {
   border: 5px solid black;
   position: relative;
   box-shadow: 0px 0px 15px 12px rgb(0 0 0 / 20%);
+  font-family: "Open Sans", sans-serif;
 
   @include media-breakpoint-up(sm) {
     width: calc(100% / 1 - 20px);
@@ -126,7 +118,6 @@ export default {
     width: 100%;
   }
   .poster_na {
-    margin-top: 20%;
     border: 1px solid black;
     width: 100%;
   }
@@ -144,6 +135,22 @@ export default {
   right: 0;
   padding: 20px;
   overflow-y: scroll;
+  .title {
+    background-color: rgb(88, 88, 88);
+    width: 100%;
+    border-bottom: 2px solid black;
+  }
+  .bottom {
+    background-color: rgb(88, 88, 88);
+    width: 100%;
+    border-top: 2px solid black;
+  }
+}
+.flag {
+  margin-left: 1px;
+}
+.vote {
+  margin-left: 10px;
 }
 
 /* width */
@@ -176,13 +183,7 @@ export default {
 .cardMovie:hover .cover {
   opacity: 0.1;
 }
-
-.flag {
-  width: 50px;
-}
-
-.stars {
+.fa-star {
   color: rgb(235, 235, 91);
-  font-size: 2rem;
 }
 </style>

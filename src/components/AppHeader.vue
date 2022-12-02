@@ -8,15 +8,20 @@ export default {
       store,
     };
   },
+  methods: {
+    reload() {
+      window.location.reload();
+    },
+  },
 };
 </script>
 
 <template>
   <header>
     <div
-      class="container d-flex justify-content-between p-3 align-items-center"
+      class="container-lg d-flex justify-content-between p-3 align-items-center"
     >
-      <div class="logo">
+      <div class="logo" @click="reload">
         <h1>BOOLFIX</h1>
       </div>
       <!-- FORM DI RICERCA -->
@@ -45,6 +50,10 @@ header {
   right: 0;
   box-shadow: 0px 0px 5px 2px rgb(0 0 0 / 20%);
   z-index: 10;
+
+  .logo {
+    cursor: pointer;
+  }
 
   button {
     margin: 0 10px;
