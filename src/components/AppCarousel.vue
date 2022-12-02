@@ -45,19 +45,13 @@ export default {
       <div class="carousel-container">
         <h2>FILM</h2>
         <div class="carousel-list">
+          <div @click="prevImageMovie" class="prev">
+            <font-awesome-icon icon="fa-solid fa-chevron-left" class="arrow" />
+          </div>
+          <div @click="nextImageMovie" class="next">
+            <font-awesome-icon icon="fa-solid fa-chevron-right" class="arrow" />
+          </div>
           <ul class="slider-content">
-            <div @click="prevImageMovie" class="prev">
-              <font-awesome-icon
-                icon="fa-solid fa-chevron-left"
-                class="arrow"
-              />
-            </div>
-            <div @click="nextImageMovie" class="next">
-              <font-awesome-icon
-                icon="fa-solid fa-chevron-right"
-                class="arrow"
-              />
-            </div>
             <li v-for="movie in store.movies">
               <AppCard
                 :title="movie.title"
@@ -76,19 +70,13 @@ export default {
         <h2>SERIE TV</h2>
 
         <div class="carousel-list">
+          <div @click="prevImageTv" class="prev">
+            <font-awesome-icon icon="fa-solid fa-chevron-left" class="arrow" />
+          </div>
+          <div @click="nextImageTv" class="next">
+            <font-awesome-icon icon="fa-solid fa-chevron-right" class="arrow" />
+          </div>
           <ul class="slider-content">
-            <div @click="prevImageTv" class="prev">
-              <font-awesome-icon
-                icon="fa-solid fa-chevron-left"
-                class="arrow"
-              />
-            </div>
-            <div @click="nextImageTv" class="next">
-              <font-awesome-icon
-                icon="fa-solid fa-chevron-right"
-                class="arrow"
-              />
-            </div>
             <li v-for="tvserie in store.tvseries">
               <AppCard
                 :title="tvserie.name"
@@ -97,6 +85,7 @@ export default {
                 :vote="tvserie.vote_average"
                 :poster="tvserie.poster_path"
                 :summary="tvserie.overview"
+                :key="tvserie.name"
               />
             </li>
           </ul>
@@ -126,6 +115,9 @@ main {
       display: flex;
       flex-wrap: nowrap;
       position: relative;
+      .carousel {
+        transition: all 2s;
+      }
 
       li {
         list-style-type: none;

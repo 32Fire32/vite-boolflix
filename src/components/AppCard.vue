@@ -75,7 +75,6 @@ export default {
       <div class="bottom d-flex align-items-center justify-content-between p-2">
         <!-- BANDIERA -->
         <div class="language d-flex align-items-center">
-          <span>Lingua</span>
           <CountryFlag :country="langFlag(originalLanguage)" size="small" />
         </div>
         <!-- VOTO STELLE -->
