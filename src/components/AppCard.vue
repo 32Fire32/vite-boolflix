@@ -99,6 +99,7 @@ export default {
   padding: 10px;
   margin: 10px;
   width: 100%;
+  min-height: 243px;
   border: 5px solid black;
   position: relative;
   box-shadow: 0px 0px 15px 12px rgb(0 0 0 / 20%);

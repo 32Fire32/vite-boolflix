@@ -2,14 +2,14 @@
 import axios from "axios";
 import { store } from "./store.js";
 
+import AppCarousel from "./components/AppCarousel.vue";
 import AppHeader from "./components/AppHeader.vue";
-import AppMain from "./components/AppMain.vue";
 import AppIn from "./components/AppIn.vue";
 export default {
   components: {
     AppHeader,
-    AppMain,
     AppIn,
+    AppCarousel,
   },
   data() {
     return {
@@ -63,8 +63,8 @@ export default {
 
 <template>
   <AppHeader @search="getMovie" />
+  <AppCarousel v-if="store.start" />
   <AppIn v-if="!store.start" />
-  <AppMain v-if="store.start" />
 </template>
 
 <style lang="scss">
