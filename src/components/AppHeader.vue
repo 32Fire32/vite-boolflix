@@ -72,19 +72,21 @@ header {
   top: 0;
   left: 0;
   right: 0;
-  box-shadow: 0px 0px 5px 2px rgb(0 0 0 / 20%);
+  box-shadow: 0rem 0rem 0.3125rem 0.125rem rgb(0 0 0 / 20%);
   z-index: 10;
 
   .logo {
     cursor: pointer;
+    @include media-breakpoint-down(sm) {
+      display: none;
+    }
   }
 
+  // PROTEZIONE MINORI
   .child-off {
     color: var(--primary-color);
     font-size: 1.4rem;
-    border: 1px solid var(--primary-color);
-    border-radius: 100%;
-    padding: 5px;
+    padding: 0.3125rem;
   }
 
   .child-on {
@@ -92,7 +94,7 @@ header {
     font-size: 1.4rem;
     border: 1px solid green;
     border-radius: 100%;
-    padding: 5px;
+    padding: 0.3125rem 0.4375rem;
   }
 
   button {

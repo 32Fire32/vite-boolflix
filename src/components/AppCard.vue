@@ -33,11 +33,6 @@ export default {
     rateVote() {
       return Math.ceil(this.vote / 2);
     },
-    // isFlag() {
-    //   this.store.flags.forEach((flag) => {
-    //     console.log(flag.indexOf(this.originalLanguage) != -1);
-    //   });
-    // },
   },
 };
 </script>
@@ -94,21 +89,16 @@ export default {
 
 <style scoped lang="scss">
 .cardMovie {
-  background-color: rgb(92, 92, 92);
-  padding: 10px;
-  margin: 10px;
-  width: 100%;
-  border: 5px solid black;
+  margin: 0.3125rem;
   position: relative;
-  box-shadow: 0px 0px 15px 12px rgb(0 0 0 / 20%);
   font-family: "Open Sans", sans-serif;
 
   .poster {
-    border: 1px solid black;
+    border: 0.0625rem solid black;
     width: 100%;
   }
   .poster_na {
-    border: 1px solid black;
+    border: 0.0625rem solid black;
     width: 100%;
   }
   .cover {
@@ -119,11 +109,11 @@ export default {
   display: none;
   width: 100%;
   height: 100%;
-  border: 1px solid black;
+  border: 0.0625rem solid black;
   position: absolute;
   top: 0;
   right: 0;
-  padding: 20px;
+  padding: 1.25rem;
   overflow-y: scroll;
 
   .title {
@@ -137,16 +127,13 @@ export default {
     border-top: 2px solid black;
   }
 }
-.flag {
-  margin-left: 1px;
-}
 .vote {
-  margin-left: 10px;
+  margin-left: 0.625rem;
 }
 
 /* width */
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 0.3125rem;
 }
 
 /* Track */
@@ -173,7 +160,6 @@ export default {
 }
 .cardMovie:hover .cover {
   opacity: 0.1;
-  transform: scale(110%);
 }
 .fa-star {
   color: rgb(235, 235, 91);

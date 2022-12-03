@@ -12,7 +12,6 @@ export default {
   data() {
     return {
       store,
-      nextTab: false,
     };
   },
   methods: {
@@ -41,9 +40,9 @@ export default {
 <template>
   <main>
     <!-- SEZIONE FILM -->
-    <section class="container">
+    <section>
       <div class="carousel-container">
-        <h2>FILM</h2>
+        <h2 class="filmTitle ms-5">FILM</h2>
         <div class="carousel-list">
           <div @click="prevImageMovie" class="prev">
             <font-awesome-icon icon="fa-solid fa-chevron-left" class="arrow" />
@@ -67,7 +66,7 @@ export default {
       </div>
       <!-- SEZIONE SERIE TV -->
       <div class="carousel-container">
-        <h2>SERIE TV</h2>
+        <h2 class="ms-5">SERIE TV</h2>
 
         <div class="carousel-list">
           <div @click="prevImageTv" class="prev">
@@ -97,15 +96,21 @@ export default {
 
 <style scoped lang="scss">
 main {
+  overflow-x: auto;
   height: 100%;
   margin-top: 100px;
   color: #fff;
   background: linear-gradient(to top, #000000 50%, #dadbd4);
 }
 
+// CAROSELLO
 .carousel-container {
+  .filmTitle {
+    color: black;
+  }
   .carousel-list {
     overflow-x: auto;
+    position: relative;
 
     &::-webkit-scrollbar {
       display: none;
@@ -115,25 +120,22 @@ main {
       display: flex;
       flex-wrap: nowrap;
       position: relative;
-      .carousel {
-        transition: all 2s;
-      }
 
       li {
         list-style-type: none;
         flex: 0 0 auto;
         width: 50%;
         @include media-breakpoint-up(sm) {
-          width: calc(100% / 2 - 20px);
+          width: calc(100% / 2 - 1.25rem);
         }
         @include media-breakpoint-up(md) {
-          width: calc(100% / 3 - 20px);
+          width: calc(100% / 3 - 1.25rem);
         }
         @include media-breakpoint-up(lg) {
-          width: calc(100% / 4 - 20px);
+          width: calc(100% / 4 - 1.25rem);
         }
         @include media-breakpoint-up(xl) {
-          width: calc(100% / 5 - 20px);
+          width: calc(100% / 5 - 1.25rem);
         }
 
         cursor: pointer;
@@ -141,6 +143,7 @@ main {
     }
   }
 
+  // BOTTONI
   .prev,
   .next {
     position: absolute;
